@@ -1,0 +1,54 @@
+{
+  "info": {
+    "name": "Cohere Endpoints",
+    "description": "Collection for testing Cohere Embed API (v2) as part of RAG pipeline embedding provider comparison (Mistral vs Cohere).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "cohere_api_key",
+      "value": "PASTE_YOUR_TRIAL_KEY_HERE",
+      "type": "string"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://api.cohere.com",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Embed",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{cohere_api_key}}",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"embed-english-v3.0\",\n  \"texts\": [\"This is a sample test case description for QA automation\"],\n  \"input_type\": \"search_document\",\n  \"embedding_types\": [\"float\"]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v2/embed",
+          "host": ["{{baseUrl}}"],
+          "path": ["v2", "embed"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
